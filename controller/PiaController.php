@@ -15,13 +15,14 @@ class PiaController extends Controller
 
   $user_transaction = collect($file)->where('user_id',$ipa)->values()->toArray();
     $usr=Usr::where('id',$ipa)->first()->toArray();
+  // return  $usr=Usr::where('id',$ipa)->toSql();
 
 
   return view('pia',compact('user_transaction','usr'));
 
     }
 
-    
+
    function country(){
        $user=Usr::get();
       $country= Country::get();
@@ -39,9 +40,10 @@ class PiaController extends Controller
 
       $usc[]=[collect($count)->count(),$amount];
     }
+  $country_data=  array_combine($country->pluck('name')->toArray(), $usc);
 
 //return $usc;
-  return view('country',compact('country','usc'));
+  return view('country',compact('country_data'));
 
    }
 
