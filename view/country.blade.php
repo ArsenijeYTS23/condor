@@ -1,7 +1,7 @@
 
-@foreach(array_combine($country->pluck('name')->toArray(), $usc) as $d1 => $d2)
+@foreach($country_data as $country => $data)
 
-<h1>{{$d1}}</h1>
+<h1>{{$country}}</h1>
 
 <table>
 
@@ -12,8 +12,8 @@
   </tr>
 
   <tr>
-  @foreach($d2 as $dee)
-    <td>{{$dee}}</td>
+  @foreach($data as $da)
+    <td>{{$da}}</td>
   @endforeach
   </tr>
 
